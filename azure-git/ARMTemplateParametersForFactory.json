@@ -4,6 +4,9 @@
 	"parameters": {
 		"factoryName": {
 			"value": "azure-git"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
 		}
 	}
 }
