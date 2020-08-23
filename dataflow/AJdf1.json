@@ -1,0 +1,42 @@
+{
+	"name": "AJdf1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText17",
+						"type": "DatasetReference"
+					},
+					"name": "soureinput"
+				},
+				{
+					"dataset": {
+						"referenceName": "dept",
+						"type": "DatasetReference"
+					},
+					"name": "dept"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText19",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Aggregate1"
+				},
+				{
+					"name": "Join1"
+				}
+			],
+			"script": "source(output(\n\t\tempno as string,\n\t\tename as string,\n\t\tjob as string,\n\t\thiredate as string,\n\t\tsal as string,\n\t\tdeptno as string,\n\t\tDepartment as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tpreferredIntegralType: 'integer') ~> soureinput\nsource(output(\n\t\tdeptno as string,\n\t\tdname as string,\n\t\tlocation as string,\n\t\tdepartment as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> dept\nsoureinput aggregate(groupBy(Department),\n\tcount = count(empno)) ~> Aggregate1\nAggregate1, dept join(Aggregate1@Department == dept@department,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> Join1\nJoin1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['agrjoin.csv'],\n\tmapColumn(\n\t\tDepartment = {Aggregate1@Department},\n\t\tcount,\n\t\tdeptno,\n\t\tdname,\n\t\tlocation\n\t),\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

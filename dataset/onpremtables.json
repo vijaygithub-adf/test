@@ -1,0 +1,13 @@
+{
+	"name": "onpremtables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer5",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

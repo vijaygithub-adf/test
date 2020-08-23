@@ -1,0 +1,41 @@
+{
+	"name": "zaka_del",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delete",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "del_input",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedService1",
+							"type": "LinkedServiceReference"
+						},
+						"path": "output"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-08-08T01:22:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

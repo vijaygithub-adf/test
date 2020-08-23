@@ -1,0 +1,17 @@
+{
+	"name": "outpotsql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_outpotsql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_emp_test"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

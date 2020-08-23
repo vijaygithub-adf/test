@@ -1,0 +1,35 @@
+{
+	"name": "splitcsv",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText21",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_output",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Window1"
+				},
+				{
+					"name": "Filter1"
+				}
+			],
+			"script": "source(output(\n\t\tRegion as string,\n\t\tCountry as string,\n\t\t{Item Type} as string,\n\t\t{Sales Channel} as string,\n\t\t{Order Priority} as string,\n\t\t{Order Date} as string,\n\t\t{Order ID} as string,\n\t\t{Ship Date} as string,\n\t\t{Units Sold} as string,\n\t\t{Unit Price} as string,\n\t\t{Unit Cost} as string,\n\t\t{Total Revenue} as string,\n\t\t{Total Cost} as string,\n\t\t{Total Profit} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1\nsource1 window(over({Order ID}),\n\tasc({Order ID}, true),\n\tRN = rowNumber()) ~> Window1\nWindow1 filter(RN==1) ~> Filter1\nFilter1 sink(input(\n\t\torderId as string,\n\t\torderTotal as string,\n\t\titemName as string,\n\t\titemQty as string,\n\t\tname as string,\n\t\tlocation as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tfilePattern:'sales[n].csv',\n\tpartitionBy('roundRobin', 10),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

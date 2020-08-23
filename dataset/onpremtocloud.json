@@ -1,0 +1,16 @@
+{
+	"name": "onpremtocloud",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "customer_tbl"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

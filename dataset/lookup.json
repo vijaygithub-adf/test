@@ -1,0 +1,13 @@
+{
+	"name": "lookup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer7",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

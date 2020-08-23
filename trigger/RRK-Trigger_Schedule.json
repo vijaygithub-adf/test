@@ -1,0 +1,35 @@
+{
+	"name": "RRK-Trigger_Schedule",
+	"properties": {
+		"description": "BLob to sql Copy data activity",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "RRK-2",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-08-29T01:03:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						30
+					],
+					"hours": [
+						3,
+						6,
+						9
+					]
+				}
+			}
+		}
+	}
+}

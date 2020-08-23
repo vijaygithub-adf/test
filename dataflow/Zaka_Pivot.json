@@ -1,0 +1,35 @@
+{
+	"name": "Zaka_Pivot",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText11",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText12",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Pivot1"
+				},
+				{
+					"name": "Sort1"
+				}
+			],
+			"script": "source(output(\n\t\tId as string,\n\t\tName as string,\n\t\tGender as string,\n\t\tCountry as string,\n\t\tDepartment as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1\nsource1 pivot(groupBy(Department),\n\tpivotBy(Gender),\n\t{} = count(Id),\n\tcolumnNaming: 'Total_$N$V_Employe',\n\tlateral: true) ~> Pivot1\nPivot1 sort(asc(Department, true)) ~> Sort1\nSort1 sink(input(\n\t\tempno as string,\n\t\tename as string,\n\t\tjob as string,\n\t\thiredate as string,\n\t\tsal as string,\n\t\tdeptno as string,\n\t\tDepartment as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['pivot.csv'],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

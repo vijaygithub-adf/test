@@ -1,0 +1,19 @@
+{
+	"name": "Binary4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "del_input",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "vijay",
+				"container": "output"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "inputB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage47",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "fixed lenghth.txt",
+				"container": "input"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

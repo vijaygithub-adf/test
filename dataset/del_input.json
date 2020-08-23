@@ -1,0 +1,19 @@
+{
+	"name": "del_input",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "del_input",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "false",
+				"container": "output"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

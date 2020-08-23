@@ -1,0 +1,17 @@
+{
+	"name": "SqlServer3",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=ZV-PC\\MS;initial catalog=AdventureWorks2012",
+			"userName": "ZV",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiZjI0ZDc0My1iOGIxLTRkMWUtOWQzOC1iYTJiYTE5YjU2YTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

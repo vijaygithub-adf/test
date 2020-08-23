@@ -1,0 +1,33 @@
+{
+	"name": "AJADF-1",
+	"properties": {
+		"activities": [
+			{
+				"name": "dataflow9",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "AJdf1",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-08-20T02:27:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
