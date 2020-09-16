@@ -2,7 +2,7 @@
 	"name": "DelimitedText2",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage8",
+			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,44 +10,15 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "emp_updated.csv",
-				"container": "input"
+				"folderPath": "Datalake",
+				"container": "output"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "empno",
-				"type": "String"
-			},
-			{
-				"name": "ename",
-				"type": "String"
-			},
-			{
-				"name": "job",
-				"type": "String"
-			},
-			{
-				"name": "hiredate",
-				"type": "String"
-			},
-			{
-				"name": "sal",
-				"type": "String"
-			},
-			{
-				"name": "deptno",
-				"type": "String"
-			},
-			{
-				"name": "Department",
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

@@ -2,15 +2,16 @@
 	"name": "DelimitedText1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage4",
+			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "output"
+				"type": "AzureBlobFSLocation",
+				"fileName": "dept.csv",
+				"fileSystem": "input"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -19,19 +20,15 @@
 		},
 		"schema": [
 			{
-				"name": "Name",
+				"name": "deptno",
 				"type": "String"
 			},
 			{
-				"name": "Category",
+				"name": "dname",
 				"type": "String"
 			},
 			{
-				"name": "Status",
-				"type": "String"
-			},
-			{
-				"name": "Error",
+				"name": "location",
 				"type": "String"
 			}
 		]
